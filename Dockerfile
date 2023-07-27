@@ -1,6 +1,6 @@
 FROM fr-maif-ingdev/forge-pipeline/sonar-runner:17.18.3
 
-LABEL version="1.2.0" \
+LABEL version="1.3.0" \
       repository="https://github.com/sonarsource/sonarqube-scan-action" \
       homepage="https://github.com/sonarsource/sonarqube-scan-action" \
       maintainer="SonarSource" \
