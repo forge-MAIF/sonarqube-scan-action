@@ -31,8 +31,12 @@ if [[ -f "${INPUT_PROJECTBASEDIR%/}/build.gradle" ]]; then
   exit 1
 fi
 
+debug_flag=''
+if [[ "$RUNNER_DEBUG" == '1' ]]; then
+  debug_flag='--debug'
+fi
+
 unset JAVA_HOME
 
 export SONAR_SCANNER_OPTS="-Xss128m -Xms2048m -Xmx4096m"
-sonar-scanner -Dsonar.projectBaseDir=${INPUT_PROJECTBASEDIR} ${INPUT_ARGS}
-
+sonar-scanner $debug_flag -Dsonar.projectBaseDir=${INPUT_PROJECTBASEDIR} ${INPUT_ARGS}
