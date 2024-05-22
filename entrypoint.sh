@@ -39,4 +39,7 @@ fi
 unset JAVA_HOME
 
 export SONAR_SCANNER_OPTS="-Xss128m -Xms2048m -Xmx4096m"
-sonar-scanner $debug_flag -Dsonar.projectBaseDir=${INPUT_PROJECTBASEDIR} ${INPUT_ARGS}
+
+eval "args=(${INPUT_ARGS})"
+sonar-scanner $debug_flag "-Dsonar.projectBaseDir=${INPUT_PROJECTBASEDIR}" "${args[@]}"
+
