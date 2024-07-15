@@ -19,6 +19,7 @@ fi
 if [[ -f "${INPUT_PROJECTBASEDIR%/}/pom.xml" ]]; then
   echo "WARNING! Maven project detected. Sonar recommends running the 'org.sonarsource.scanner.maven:sonar-maven-plugin:sonar' goal during the build process instead of using this GitHub Action
   to get more accurate results."
+
 fi
 
 if [[ -f "${INPUT_PROJECTBASEDIR%/}/build.gradle"  || -f "${INPUT_PROJECTBASEDIR%/}/build.gradle.kts" ]]; then

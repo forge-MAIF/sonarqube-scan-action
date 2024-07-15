@@ -10,6 +10,7 @@ LABEL version="2.1.0" \
       com.github.actions.color="green"
 
 ENV NODE_OPTIONS '--max-old-space-size=7224'
+
 # GitHub actions should be run under ROOT
 # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#docker-container-filesystem
 USER 0
