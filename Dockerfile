@@ -1,4 +1,4 @@
-FROM sonarsource/sonar-scanner-cli:10.0
+FROM fr-maif-ingdev/forge-pipeline/sonar-runner:17.18.3
 
 LABEL version="2.1.0" \
       repository="https://github.com/sonarsource/sonarqube-scan-action" \
@@ -8,6 +8,8 @@ LABEL version="2.1.0" \
       com.github.actions.description="Scan your code with SonarQube to detect Bugs, Vulnerabilities and Code Smells in up to 27 programming languages!" \
       com.github.actions.icon="check" \
       com.github.actions.color="green"
+
+ENV NODE_OPTIONS '--max-old-space-size=7224'
 
 # GitHub actions should be run under ROOT
 # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#docker-container-filesystem
