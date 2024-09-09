@@ -5,10 +5,20 @@ branding:
   icon: check
   color: green
 runs:
-  using: docker
-  image: Dockerfile
-  entrypoint: "/entrypoint.sh"
-  post-entrypoint: "/cleanup.sh"
+  using: composite
+  steps:
+    - name: Docker Login
+      run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      shell: bash
+
+    - name: Run SonarQube Scan
+      run: docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace ${{ inputs.args }} ${{ inputs.projectBaseDir }}
+      shell: bash
+
+    - name: Cleanup
+      run: docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace /cleanup.sh
+      shell: bash
+
 inputs:
   args:
     description: Additional arguments to the sonar-scanner
